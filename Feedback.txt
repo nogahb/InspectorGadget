@@ -1,0 +1,9 @@
+Grade Distribution:
++30 - README: explain how you completed the level.
++40 - Correct identification of Player.cs fields.
++20 - Choosing a good descriptive name for each field.
++10 - Added comments in Player.cs code.
+
+Rules:
+In the editor - You are only allowed to change the values of the fields of the Player component.
+In the code - You are only allowed to rename the fields, variables and methods in Player.cs (and any other places in the code that they are being used). Don't change anything else.
