@@ -21,22 +21,22 @@ public class Player : MonoBehaviour {
     public float param02 = 15f;
     public float param03 = 7f;
     public float param04 = 2f;
-    public float param05 = 45f;
+    public float armAngle = 45f;
     public float param06 = 15f;
 
     // KeyCode is an enum of all the keyboard keys that Unity knows to handle.
     // Since it is an enum, the inspector shows it as a drop down menu. Very
     // convenient!
 
-    public KeyCode param07;
-    public KeyCode param08;
-    public KeyCode param09;
-    public KeyCode param10;
+    public KeyCode rightKey;
+    public KeyCode leftKey;
+    public KeyCode jumpKey;
+    public KeyCode shootKey;
 
     // These parameters' types are Unity components, so in the inspector they
     // are shown as a field that we can drag a suitable reference to it.
 
-    public Transform param11;
+    public Transform armGraphic;
     public Transform param12;
     public Rigidbody2D param13;
 
@@ -88,28 +88,28 @@ public class Player : MonoBehaviour {
     /// Unity calls it every frame - every time the screen renders the game view.
     /// </summary>
     protected void Update() {
-        var var01 = param11.eulerAngles;
-        var01.z = param05;
-        param11.eulerAngles = var01;
+        var armGraphicAngle = armGraphic.eulerAngles;
+        armGraphicAngle.z = armAngle;
+        armGraphic.eulerAngles = armGraphicAngle;
 
         param17.gravityScale = param04;
 
         var var02 = param17.velocity;
-        if (Input.GetKeyDown(param09) && Property01) {
+        if (Input.GetKeyDown(jumpKey) && Property01) {
             var02.y = param02;
             param17.velocity = var02;
             param16.SetTrigger(param15);
-        } else if (Input.GetKey(param07)) {
+        } else if (Input.GetKey(rightKey)) {
             var02.x = param03;
             param17.velocity = var02;
-        } else if (Input.GetKey(param08)) {
+        } else if (Input.GetKey(leftKey)) {
             var02.x = -param03;
             param17.velocity = var02;
-        } else if (Input.GetKey(param10)) {
+        } else if (Input.GetKey(shootKey)) {
             if (!param13.gameObject.activeInHierarchy) {
                 param13.gameObject.SetActive(true);
                 param13.position = param12.position;
-                param13.velocity = Vector2.right.Rotate(Mathf.Deg2Rad * param05) * param06;
+                param13.velocity = Vector2.right.Rotate(Mathf.Deg2Rad * armAngle) * param06;
             }
         }
     }
