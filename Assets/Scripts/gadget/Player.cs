@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
 
     private Animator param16;
     private Rigidbody2D param17;
-    private OverlapChecker param18;
+    private OverlapChecker overlapChecker;
 
     /// <summary>
     /// This is a C# property. If in C++ or other languages you'll define private
@@ -64,9 +64,9 @@ public class Player : MonoBehaviour {
     /// to define a GetX or CalculateX or GenerateX instead of defining a property.
     /// This will let the user know that this process is costly.
     /// </summary>
-    private bool Property01 {
+    private bool CanJump {
         get {
-            return param18.isOverlapping;
+            return overlapChecker.isOverlapping;
         }
     }
 
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour {
     protected void Awake() {
         param16 = GetComponent<Animator>();
         param17 = GetComponent<Rigidbody2D>();
-        param18 = GetComponent<OverlapChecker>();
+        overlapChecker = GetComponent<OverlapChecker>();
 
         param16.SetBool(param14, true);
     }
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
         param17.gravityScale = param04;
 
         var var02 = param17.velocity;
-        if (Input.GetKeyDown(jumpKey) && Property01) {
+        if (Input.GetKeyDown(jumpKey) && CanJump) {
             var02.y = jumpHeight;
             param17.velocity = var02;
             param16.SetTrigger(param15);
