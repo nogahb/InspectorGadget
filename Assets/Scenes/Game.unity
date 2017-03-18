@@ -756,6 +756,11 @@ SpriteRenderer:
   m_Color: {r: 0.31336504, g: 0.50432813, b: 0.61764705, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!4 &590746861 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013277202040, guid: f6f0934631d2a4e22b1ebc0d0d3a104a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1072505668}
 --- !u!1 &606496598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,7 +1414,7 @@ Prefab:
         type: 2}
       propertyPath: armGraphic
       value: 
-      objectReference: {fileID: 1688262401}
+      objectReference: {fileID: 590746861}
     - target: {fileID: 114000010923731258, guid: f6f0934631d2a4e22b1ebc0d0d3a104a,
         type: 2}
       propertyPath: handGraphic
@@ -2539,11 +2544,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011677798970, guid: 1d243dca8e44e4f02899785477dcac5f,
     type: 2}
   m_PrefabInternal: {fileID: 1667220345}
---- !u!4 &1688262401 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000010359291326, guid: f6f0934631d2a4e22b1ebc0d0d3a104a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1072505668}
 --- !u!1001 &1691177139
 Prefab:
   m_ObjectHideFlags: 0
@@ -2779,7 +2779,7 @@ Prefab:
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 135.86592
+      value: 136
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
