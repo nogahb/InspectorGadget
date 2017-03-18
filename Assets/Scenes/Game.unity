@@ -1380,6 +1380,11 @@ Prefab:
       propertyPath: param13
       value: 
       objectReference: {fileID: 300158393}
+    - target: {fileID: 114000010923731258, guid: f6f0934631d2a4e22b1ebc0d0d3a104a,
+        type: 2}
+      propertyPath: param01
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6f0934631d2a4e22b1ebc0d0d3a104a, type: 2}
   m_IsPrefabParent: 0
@@ -2719,12 +2724,12 @@ Prefab:
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 21.957115
+      value: 20.022346
       objectReference: {fileID: 0}
     - target: {fileID: 224000014291456382, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 42.90503
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
