@@ -17,7 +17,7 @@ namespace Gadget {
 /// useful methods to manipulate the component and the game object it lives on.
 /// </summary>
 public class Player : MonoBehaviour {
-    public int param01 = 1;
+    public int health = 1;
     public float param02 = 15f;
     public float param03 = 7f;
     public float param04 = 2f;
@@ -37,8 +37,8 @@ public class Player : MonoBehaviour {
     // are shown as a field that we can drag a suitable reference to it.
 
     public Transform armGraphic;
-    public Transform param12;
-    public Rigidbody2D param13;
+    public Transform handGraphica;
+    public Rigidbody2D bullet;
 
     private readonly int param14 = Animator.StringToHash("Alive");
     private readonly int param15 = Animator.StringToHash("Jump");
@@ -106,10 +106,10 @@ public class Player : MonoBehaviour {
             var02.x = -param03;
             param17.velocity = var02;
         } else if (Input.GetKey(shootKey)) {
-            if (!param13.gameObject.activeInHierarchy) {
-                param13.gameObject.SetActive(true);
-                param13.position = param12.position;
-                param13.velocity = Vector2.right.Rotate(Mathf.Deg2Rad * armAngle) * param06;
+            if (!bullet.gameObject.activeInHierarchy) {
+                bullet.gameObject.SetActive(true);
+                bullet.position = handGraphic.position;
+                bullet.velocity = Vector2.right.Rotate(Mathf.Deg2Rad * armAngle) * param06;
             }
         }
     }
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour {
     /// Read more here: https://docs.unity3d.com/Manual/CollidersOverview.html
     /// </summary>
     protected void OnCollisionEnter2D(Collision2D collision) {
-        if (param01 <= 0) return;
+        if (health <= 0) return;
 
         if (collision.gameObject.CompareTag("Victory")) {
             DebugUtils.Log("Great Job!");
@@ -133,8 +133,8 @@ public class Player : MonoBehaviour {
         }
         if (!collision.gameObject.CompareTag("Enemy")) return;
 
-        --param01;
-        if (param01 > 0) return;
+        --health;
+        if (health > 0) return;
 
         param16.SetBool(param14, false);
         param17.velocity = Vector2.zero;
