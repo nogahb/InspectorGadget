@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
     // are shown as a field that we can drag a suitable reference to it.
 
     public Transform armGraphic;
-    public Transform handGraphica;
+    public Transform handGraphic;
     public Rigidbody2D bullet;
 
     private readonly int param14 = Animator.StringToHash("Alive");
