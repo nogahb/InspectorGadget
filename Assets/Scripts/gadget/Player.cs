@@ -19,10 +19,10 @@ namespace Gadget {
 public class Player : MonoBehaviour {
     public int health = 1;
     public float jumpHeight = 15f;
-    public float param03 = 7f;
-    public float param04 = 2f;
+    public float movementSpeed = 7f;
+    public float gravityScale = 2f;
     public float armAngle = 45f;
-    public float param06 = 15f;
+    public float bulletSpeed = 15f;
 
     // KeyCode is an enum of all the keyboard keys that Unity knows to handle.
     // Since it is an enum, the inspector shows it as a drop down menu. Very
@@ -40,11 +40,11 @@ public class Player : MonoBehaviour {
     public Transform handGraphic;
     public Rigidbody2D bullet;
 
-    private readonly int param14 = Animator.StringToHash("Alive");
-    private readonly int param15 = Animator.StringToHash("Jump");
+    private readonly int isAliveParam = Animator.StringToHash("Alive");
+    private readonly int isJumpingParam = Animator.StringToHash("Jump");
 
-    private Animator param16;
-    private Rigidbody2D param17;
+    private Animator animator;
+    private Rigidbody2D physicsComponent;
     private OverlapChecker overlapChecker;
 
     /// <summary>
@@ -76,11 +76,12 @@ public class Player : MonoBehaviour {
     /// a constructor.
     /// </summary>
     protected void Awake() {
-        param16 = GetComponent<Animator>();
-        param17 = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        physicsComponent = GetComponent<Rigidbody2D>();
         overlapChecker = GetComponent<OverlapChecker>();
 
-        param16.SetBool(param14, true);
+        // Make the player alive
+        animator.SetBool(isAliveParam, true);
     }
 
     /// <summary>
@@ -92,24 +93,24 @@ public class Player : MonoBehaviour {
         armGraphicAngle.z = armAngle;
         armGraphic.eulerAngles = armGraphicAngle;
 
-        param17.gravityScale = param04;
+        physicsComponent.gravityScale = gravityScale;
 
-        var var02 = param17.velocity;
+        var movement = physicsComponent.velocity;
         if (Input.GetKeyDown(jumpKey) && CanJump) {
-            var02.y = jumpHeight;
-            param17.velocity = var02;
-            param16.SetTrigger(param15);
+            movement.y = jumpHeight;
+            physicsComponent.velocity = movement;
+            animator.SetTrigger(isJumpingParam);
         } else if (Input.GetKey(rightKey)) {
-            var02.x = param03;
-            param17.velocity = var02;
+            movement.x = movementSpeed;
+            physicsComponent.velocity = movement;
         } else if (Input.GetKey(leftKey)) {
-            var02.x = -param03;
-            param17.velocity = var02;
+            movement.x = -movementSpeed;
+            physicsComponent.velocity = movement;
         } else if (Input.GetKey(shootKey)) {
             if (!bullet.gameObject.activeInHierarchy) {
                 bullet.gameObject.SetActive(true);
                 bullet.position = handGraphic.position;
-                bullet.velocity = Vector2.right.Rotate(Mathf.Deg2Rad * armAngle) * param06;
+                bullet.velocity = Vector2.right.Rotate(Mathf.Deg2Rad * armAngle) * bulletSpeed;
             }
         }
     }
@@ -136,9 +137,9 @@ public class Player : MonoBehaviour {
         --health;
         if (health > 0) return;
 
-        param16.SetBool(param14, false);
-        param17.velocity = Vector2.zero;
-        param17.gravityScale = 4f;
+        animator.SetBool(isAliveParam, false);
+        physicsComponent.velocity = Vector2.zero;
+        physicsComponent.gravityScale = 4f;
         enabled = false;
     }
 }

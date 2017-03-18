@@ -1425,6 +1425,16 @@ Prefab:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 300158393}
+    - target: {fileID: 50000013516066502, guid: f6f0934631d2a4e22b1ebc0d0d3a104a,
+        type: 2}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 50000013516066502, guid: f6f0934631d2a4e22b1ebc0d0d3a104a,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6f0934631d2a4e22b1ebc0d0d3a104a, type: 2}
   m_IsPrefabParent: 0
@@ -2779,7 +2789,7 @@ Prefab:
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 136
+      value: 135.86592
       objectReference: {fileID: 0}
     - target: {fileID: 224000010052939704, guid: c1108448969c946088e265afa82e34d7,
         type: 2}
