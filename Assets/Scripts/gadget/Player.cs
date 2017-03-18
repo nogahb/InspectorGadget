@@ -18,7 +18,7 @@ namespace Gadget {
 /// </summary>
 public class Player : MonoBehaviour {
     public int health = 1;
-    public float param02 = 15f;
+    public float jumpHeight = 15f;
     public float param03 = 7f;
     public float param04 = 2f;
     public float armAngle = 45f;
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour {
 
         var var02 = param17.velocity;
         if (Input.GetKeyDown(jumpKey) && Property01) {
-            var02.y = param02;
+            var02.y = jumpHeight;
             param17.velocity = var02;
             param16.SetTrigger(param15);
         } else if (Input.GetKey(rightKey)) {
