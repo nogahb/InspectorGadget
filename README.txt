@@ -14,4 +14,4 @@ Walkthrough:
 
 Alternativaly:
 1. Change health to 500
-2. Change jump height to 30 and breeze through this game like boss
+2. Change jump height to 30 and breeze through this game like a boss
